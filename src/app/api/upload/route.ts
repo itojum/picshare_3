@@ -17,5 +17,5 @@ export async function POST(request: Request) {
   if (error) {
     return new Response(error.message, { status: 500 })
   }
-  return new Response(imageId, { status: 200 })
+  return Response.json({ id: imageId }, { status: 200 })
 }
