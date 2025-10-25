@@ -13,7 +13,7 @@ export async function POST(request: Request) {
 
   const { error } = await supabase.storage
     .from(backetName)
-    .upload(`${imageId}.png`, file)
+    .upload(`${imageId}.jpg`, file)
   if (error) {
     return new Response(error.message, { status: 500 })
   }

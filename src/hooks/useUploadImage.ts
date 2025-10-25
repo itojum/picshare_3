@@ -1,5 +1,6 @@
 import { path } from "@/config/path"
 import { useState } from "react"
+import { compressImage } from "@/utils/compressImage"
 
 export const useUploadImage = () => {
   const [imageId, setImageId] = useState<string | null>(null)
@@ -14,8 +15,17 @@ export const useUploadImage = () => {
     setImageId(null)
 
     try {
+      // 画像を圧縮
+      const compressedBlob = await compressImage(file)
+
+      // BlobをFileオブジェクトに変換
+      const compressedFile = new File([compressedBlob], file.name, {
+        type: 'image/jpeg',
+        lastModified: Date.now(),
+      })
+
       const formData = new FormData()
-      formData.append("file", file)
+      formData.append("file", compressedFile)
       const response = await fetch(path.api.upload, {
         method: "POST",
         body: formData,

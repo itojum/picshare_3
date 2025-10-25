@@ -1,6 +1,6 @@
 export const path = {
   supabase: {
-    image: (id: string) => `${process.env.NEXT_PUBLIC_SUPABASE_URL!}/storage/v1/object/public/picshare/${id}.png`
+    image: (id: string) => `${process.env.NEXT_PUBLIC_SUPABASE_URL!}/storage/v1/object/public/picshare/${id}.jpg`
   },
   api: {
     upload: "/api/upload"
