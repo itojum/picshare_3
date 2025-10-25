@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+import { Provider as JotaiProvider } from "jotai";
+
+import { Header } from "@/components/layout/Header/Header";
+import { IntlProviderWrapper } from "@/components/layout/IntlProviderWrapper";
+
 import "./globals.css";
 import 'smarthr-ui/smarthr-ui.css'
-import { IntlProvider } from "smarthr-ui";
 
 export const metadata: Metadata = {
   title: "PicShare",
@@ -16,10 +20,13 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang="ja">
       <body>
-        <IntlProvider locale="ja">
-          {children}
-        </IntlProvider>
-      </body>
-    </html>
+        <JotaiProvider>
+          <IntlProviderWrapper>
+            <Header />
+            {children}
+          </IntlProviderWrapper>
+        </JotaiProvider>
+      </body >
+    </html >
   );
 }

@@ -4,5 +4,6 @@ export {
   FaMagnifyingGlassIcon, 
   FaCheckIcon, 
   FaCopyIcon,
-  FaCloudArrowUpIcon
+  FaCloudArrowUpIcon,
+  FaGlobeIcon
 } from "smarthr-ui";

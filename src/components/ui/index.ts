@@ -12,7 +12,8 @@ export {
   DropZone,
   Center,
   NotificationBar,
-  Loader
+  Loader,
+  DropdownMenuButton
 } from "smarthr-ui";
 
 export * from "./icons";

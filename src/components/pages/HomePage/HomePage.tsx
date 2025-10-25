@@ -1,13 +1,17 @@
+'use client'
+
 import Link from "next/link"
-import { 
-  Button, 
-  Base, 
-  Cluster, 
-  Stack, 
-  FaCloudArrowUpIcon, 
-  FaEyeIcon, 
-  Heading, 
-  Text, 
+import { FormattedMessage } from "react-intl";
+
+import {
+  Button,
+  Base,
+  Cluster,
+  Stack,
+  FaCloudArrowUpIcon,
+  FaEyeIcon,
+  Heading,
+  Text,
   PageHeading,
   Center
 } from "@/components/ui"
@@ -17,7 +21,7 @@ export const HomePage: React.FC = () => (
     <Stack className="w-full max-w-4xl">
       <Center>
         <PageHeading size="XXL">PicShare v3</PageHeading>
-        <Text size="L">画像を簡単にアップロードして共有できます</Text>
+        <Text size="L"><FormattedMessage id="PicShareDescription"/></Text>
       </Center>
 
       <div className="grid md:grid-cols-2 gap-6">

@@ -1,0 +1,1 @@
+export { I18nMenuAdapter as I18nMenu } from "./I18Menu.adapter";
