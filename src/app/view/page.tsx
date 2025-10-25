@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { ViewPage } from "@/components/pages/ViewPage";
 import { Metadata } from "next";
+import { Center, Loader } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "PicShare - 画像を閲覧",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ViewPageContainer() {
   return (
-    <Suspense fallback={<div>読み込み中...</div>}>
+    <Suspense fallback={<Center><Loader /></Center>}>
       <ViewPage />
     </Suspense>
   );

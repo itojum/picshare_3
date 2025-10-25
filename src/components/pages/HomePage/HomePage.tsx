@@ -17,7 +17,7 @@ import {
 } from "@/components/ui"
 
 export const HomePage: React.FC = () => (
-  <div className="min-h-screen bg-background flex items-center justify-center p-4">
+  <div className="p-4">
     <Stack className="w-full max-w-4xl">
       <Center>
         <PageHeading size="XXL">PicShare v3</PageHeading>
