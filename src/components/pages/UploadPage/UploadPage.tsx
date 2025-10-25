@@ -3,17 +3,18 @@
 import Link from "next/link"
 import { ChangeEvent, DragEvent } from "react";
 
-import { 
-  Base, 
-  Button, 
-  Cluster, 
-  DropZone, 
-  FaAngleLeftIcon, 
-  FaCheckIcon, 
-  FaCloudArrowUpIcon, 
-  FaCopyIcon, 
-  PageHeading, 
-  Stack, 
+import {
+  Base,
+  Button,
+  Cluster,
+  DropZone,
+  FaAngleLeftIcon,
+  FaCheckIcon,
+  FaCloudArrowUpIcon,
+  FaCopyIcon,
+  NotificationBar,
+  PageHeading,
+  Stack,
   Text,
 } from "@/components/ui"
 import { PreviewImage } from "@/components/PreviewImage";
@@ -24,16 +25,25 @@ type Props = {
   imageId: string | null;
   copied: boolean;
   setCopied: (copied: boolean) => void;
-  uploading: boolean;
-  setUploading: (uploading: boolean) => void;
+  loading: boolean;
   handleFileChange: (e: ChangeEvent<HTMLInputElement> | DragEvent<HTMLElement>, files: FileList | null) => void;
   handleUpload: () => void;
   copyToClipboard: () => void;
   reset: () => void;
+  error: string | null;
 }
 
 export const UploadPage: React.FC<Props> = ({
-  file, preview, imageId, copied, uploading, handleFileChange, handleUpload, copyToClipboard, reset,
+  file,
+  preview,
+  imageId,
+  copied,
+  loading,
+  handleFileChange,
+  handleUpload,
+  copyToClipboard,
+  reset,
+  error
 }) => (
   <div className="min-h-screen bg-background p-4 py-12">
     <div className="max-w-2xl mx-auto">
@@ -59,16 +69,20 @@ export const UploadPage: React.FC<Props> = ({
           {!imageId ? (
             <>
               <div className="space-y-4">
-                <DropZone accept="image/*" onSelectFiles={handleFileChange} disabled={uploading} multiple={false} className="w-full h-32" />
+                <DropZone accept="image/*" onSelectFiles={handleFileChange} disabled={loading} multiple={false} className="w-full h-32" />
 
                 {preview && (
                   <PreviewImage src={preview} />
                 )}
               </div>
 
-              <Button onClick={handleUpload} disabled={!file || uploading} >
-                {uploading ? "アップロード中..." : "アップロード"}
+              <Button onClick={handleUpload} disabled={!file || loading} >
+                {loading ? "アップロード中..." : "アップロード"}
               </Button>
+
+              {error && (
+                <NotificationBar type="error" message={error} />
+              )}
             </>
           ) : (
             <div className="space-y-6">

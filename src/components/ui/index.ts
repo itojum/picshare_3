@@ -10,7 +10,8 @@ export {
   FormControl,
   InputFile,
   DropZone,
-  Center
+  Center,
+  NotificationBar
 } from "smarthr-ui";
 
 export * from "./icons";
