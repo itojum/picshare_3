@@ -2,22 +2,21 @@
 
 import Link from "next/link"
 
-import { Button, Input, Base, Text, FaAngleLeftIcon, FaEyeIcon, FaMagnifyingGlassIcon, PageHeading, Cluster, Stack, FormControl } from "@/components/ui"
+import { Button, Input, Base, Text, FaAngleLeftIcon, FaEyeIcon, FaMagnifyingGlassIcon, PageHeading, Cluster, Stack, FormControl, NotificationBar, Center, Loader } from "@/components/ui"
 import Image from "next/image";
 
 type Props = {
   imageId: string;
   setImageId: (imageId: string) => void;
-  handleView: () => void;
+  fetchImage: (imageId: string) => void;
   loading: boolean;
   error: string | null;
-  setError: (error: string | null) => void;
   imageUrl: string | null;
-  setImageUrl: (imageUrl: string | null) => void;
+  reset: () => void;
 };
 
 export const ViewPage: React.FC<Props> = ({
-  imageId, setImageId, handleView, loading, imageUrl, error, setError, setImageUrl,
+  imageId, setImageId, loading, imageUrl, error, fetchImage, reset,
 }) => (
   <div className="min-h-screen bg-background p-4 py-12">
     <div className="max-w-2xl mx-auto">
@@ -41,7 +40,7 @@ export const ViewPage: React.FC<Props> = ({
             <Text color="TEXT_GREY">画像IDを入力して共有された画像を表示します</Text>
           </div>
           <div className="space-y-6">
-            <form onSubmit={handleView}>
+            <form onSubmit={() => fetchImage(imageId)}>
               <FormControl label="画像ID">
                 <Input
                   type="text"
@@ -50,31 +49,31 @@ export const ViewPage: React.FC<Props> = ({
                   disabled={loading}
                   className="flex-1 h-8 mr-2"
                 />
-                <Button onClick={handleView} disabled={!imageId.trim() || loading} size="s" className="shrink-0">
+                <Button onClick={() => fetchImage(imageId)} disabled={!imageId.trim() || loading} size="s" className="shrink-0">
                   <FaMagnifyingGlassIcon className="w-4 h-4" />
                 </Button>
               </FormControl>
             </form>
 
             {error && (
-              <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
-                <p className="text-sm text-destructive">{error}</p>
-              </div>
+              <NotificationBar type="error" message={error} />
             )}
 
             {loading && (
-              <div className="flex items-center justify-center py-12">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-              </div>
+              <Center>
+                <Loader />
+              </Center>
             )}
 
             {imageUrl && !loading && (
               <div className="space-y-4">
-                <div className="relative w-full aspect-video bg-muted rounded-lg overflow-hidden border-2">
+                <div className="relative w-full h-96">
                   <Image
-                    src={imageUrl || "/placeholder.svg"}
+                    src={imageUrl}
                     alt="Shared image"
-                    className="w-full h-full object-contain"
+                    fill
+                    className="object-contain"
+                    unoptimized
                   />
                 </div>
                 <div className="flex gap-2">
@@ -82,11 +81,7 @@ export const ViewPage: React.FC<Props> = ({
                     新しいタブで開く
                   </Button>
                   <Button
-                    onClick={() => {
-                      setImageUrl(null)
-                      setImageId("")
-                      setError(null)
-                    }}
+                    onClick={reset}
                     variant="secondary"
                     className="flex-1"
                   >

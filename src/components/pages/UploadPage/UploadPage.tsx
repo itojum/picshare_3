@@ -106,7 +106,7 @@ export const UploadPage: React.FC<Props> = ({
                 <Button onClick={reset} variant="text" size="s" className="flex-1 bg-transparent">
                   別の画像をアップロード
                 </Button>
-                <Link href="/view" className="flex-1">
+                <Link href={`/view?imageId=${imageId}`} className="flex-1">
                   <Button variant="secondary" className="w-full">
                     画像を閲覧
                   </Button>

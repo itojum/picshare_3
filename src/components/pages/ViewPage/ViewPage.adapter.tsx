@@ -3,47 +3,21 @@
 import { useState } from "react";
 
 import { ViewPage } from "./ViewPage";
+import { useSearchParams } from "next/navigation";
+import { useFetchImage } from "@/hooks/useFetchImage";
 
 export const ViewPageAdapter: React.FC = () => {
-  const [imageId, setImageId] = useState("")
-  const [imageUrl, setImageUrl] = useState<string | null>(null)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-
-  const handleView = async () => {
-    if (!imageId.trim()) return
-
-    setLoading(true)
-    setError(null)
-    setImageUrl(null)
-
-    try {
-      const response = await fetch(`/api/images/${encodeURIComponent(imageId.trim())}`)
-
-      if (!response.ok) {
-        if (response.status === 404) {
-          throw new Error("画像が見つかりませんでした")
-        }
-        throw new Error("画像の取得に失敗しました")
-      }
-
-      const data = await response.json()
-      setImageUrl(data.url)
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "画像の取得に失敗しました")
-    } finally {
-      setLoading(false)
-    }
-  }
+  const searchParams = useSearchParams()
+  const [ imageId, setImageId ] = useState(searchParams.get("imageId") || "")
+  const { imageUrl, loading, error, fetchImage, reset } = useFetchImage()
 
   return <ViewPage
     imageId={imageId}
     setImageId={setImageId}
-    handleView={handleView}
+    fetchImage={() => fetchImage(imageId)}
     loading={loading}
     imageUrl={imageUrl}
     error={error}
-    setError={setError}
-    setImageUrl={setImageUrl}
+    reset={reset}
   />;
 };

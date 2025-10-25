@@ -11,7 +11,8 @@ export {
   InputFile,
   DropZone,
   Center,
-  NotificationBar
+  NotificationBar,
+  Loader
 } from "smarthr-ui";
 
 export * from "./icons";
