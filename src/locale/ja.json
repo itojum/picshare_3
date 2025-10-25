@@ -1,3 +1,17 @@
 {
-  "PicShareDescription": "画像を簡単にアップロードして共有できます"
+  "PicShareDescription": "画像を簡単にアップロードして共有できます",
+  "UploadImage": "画像をアップロード",
+  "UploadImageDescription": "画像をアップロードして共有用のIDを取得",
+  "UploadImageButton": "アップロードページへ",
+  "ViewImage": "画像を閲覧",
+  "ViewImageDescription": "IDを入力して共有された画像を表示",
+  "ViewImageButton": "閲覧ページへ",
+  "BackToHome": "ホームに戻る",
+  "Uploading": "アップロード中...",
+  "Upload": "アップロード",
+  "ImageID": "画像ID",
+  "UploadAnotherImage": "別の画像をアップロード",
+  "OpenInNewTab": "新しいタブで開く",
+  "ViewAnotherImage": "別の画像を閲覧",
+  "ImageIDLabel": "画像ID"
 }

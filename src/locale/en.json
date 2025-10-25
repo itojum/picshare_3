@@ -1,4 +1,18 @@
 {
-  "PicShareDescription": "Upload and share images easily"
+  "PicShareDescription": "Upload and share images easily",
+  "UploadImage": "Upload Image",
+  "UploadImageDescription": "Upload an image and get a share ID",
+  "UploadImageButton": "Upload Page",
+  "ViewImage": "View Image",
+  "ViewImageDescription": "Enter an ID to view a shared image",
+  "ViewImageButton": "View Page",
+  "BackToHome": "Back to Home",
+  "Uploading": "Uploading...",
+  "Upload": "Upload",
+  "ImageID": "Image ID",
+  "UploadAnotherImage": "Upload Another Image",
+  "OpenInNewTab": "Open in New Tab",
+  "ViewAnotherImage": "View Another Image",
+  "ImageIDLabel": "Image ID"
 }
 

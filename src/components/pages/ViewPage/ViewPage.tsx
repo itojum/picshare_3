@@ -4,6 +4,7 @@ import Link from "next/link"
 
 import { Button, Input, Base, Text, FaAngleLeftIcon, FaEyeIcon, FaMagnifyingGlassIcon, PageHeading, Cluster, Stack, FormControl, NotificationBar, Center, Loader } from "@/components/ui"
 import Image from "next/image";
+import { FormattedMessage } from "react-intl";
 
 type Props = {
   imageId: string;
@@ -25,7 +26,7 @@ export const ViewPage: React.FC<Props> = ({
         className="inline-flex items-center text-muted-foreground hover:text-foreground mb-6 transition-colors"
       >
         <FaAngleLeftIcon className="w-4 h-4 mr-2" />
-        ホームに戻る
+        <FormattedMessage id="BackToHome" />
       </Link>
 
       <Base className="p-8">
@@ -34,14 +35,14 @@ export const ViewPage: React.FC<Props> = ({
             <Cluster>
               <FaEyeIcon className="w-8 h-8 text-primary" />
               <PageHeading>
-                画像を閲覧
+                <FormattedMessage id="ViewImage" />
               </PageHeading>
             </Cluster>
-            <Text color="TEXT_GREY">画像IDを入力して共有された画像を表示します</Text>
+            <Text color="TEXT_GREY"><FormattedMessage id="ViewImageDescription" /></Text>
           </div>
           <div className="space-y-6">
             <form onSubmit={() => fetchImage(imageId)}>
-              <FormControl label="画像ID">
+              <FormControl label={<FormattedMessage id="ImageIDLabel" />}>
                 <Input
                   type="text"
                   value={imageId}
@@ -78,14 +79,14 @@ export const ViewPage: React.FC<Props> = ({
                 </div>
                 <div className="flex gap-2">
                   <Button onClick={() => window.open(imageUrl, "_blank")} variant="text" className="flex-1">
-                    新しいタブで開く
+                    <FormattedMessage id="OpenInNewTab" />
                   </Button>
                   <Button
                     onClick={reset}
                     variant="secondary"
                     className="flex-1"
                   >
-                    別の画像を表示
+                    <FormattedMessage id="ViewAnotherImage" />
                   </Button>
                 </div>
               </div>

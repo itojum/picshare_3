@@ -30,14 +30,14 @@ export const HomePage: React.FC = () => (
             <div>
               <Cluster>
                 <FaCloudArrowUpIcon className="w-6 h-6 text-primary" />
-                <Heading className="text-2xl">画像をアップロード</Heading>
+                <Heading className="text-2xl"><FormattedMessage id="UploadImage"/></Heading>
               </Cluster>
-              <Text>画像をアップロードして共有用のIDを取得</Text>
+              <Text><FormattedMessage id="UploadImageDescription"/></Text>
             </div>
             <Stack>
               <Link href="/upload">
                 <Button className="w-full" size="default">
-                  アップロードページへ
+                  <FormattedMessage id="UploadImageButton"/>
                 </Button>
               </Link>
             </Stack>
@@ -49,14 +49,14 @@ export const HomePage: React.FC = () => (
             <div>
               <Cluster>
                 <FaEyeIcon className="w-6 h-6 text-primary" />
-                <Heading className="text-2xl">画像を閲覧</Heading>
+                <Heading className="text-2xl"><FormattedMessage id="ViewImage"/></Heading>
               </Cluster>
-              <Text>IDを入力して共有された画像を表示</Text>
+              <Text><FormattedMessage id="ViewImageDescription"/></Text>
             </div>
             <Stack>
               <Link href="/view">
                 <Button className="w-full" variant="secondary" size="default">
-                  閲覧ページへ
+                  <FormattedMessage id="ViewImageButton"/>
                 </Button>
               </Link>
             </Stack>
